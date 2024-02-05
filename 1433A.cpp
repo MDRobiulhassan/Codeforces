@@ -1,13 +1,7 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
-
-int digitCount(int a[])
-{
-    while(n!=0)
-    {
-        
-    }
-}
+#define ll long long
 
 int main()
 {
@@ -16,21 +10,27 @@ int main()
 
     while (t--)
     {
-        int n, a[100], k = 0;
+        int n;
         cin >> n;
 
-        int j = 1,r=10;
-        for (int i = 1; i <= n%10; i++)
+        int last = n % 10;
+        int digit = 0;
+        while (n != 0)
         {
-            while (j < 10000)
-            {
-                a[k] = j; //1,11
-                k++; //1,2
-                j = j+r; //11,111
-                r=r*10; //100,1000
-            }
+            digit++;
+            n /= 10;
         }
-        digitCount(a);
+        // cout<<digit<<endl;cout<<last<<endl;
+        int ans;
+        if (digit == 1)
+            ans = 10 * (last - 1) + 1;
+        else if (digit == 2)
+            ans = 10 * (last - 1) + 1 + 2;
+        else if (digit == 3)
+            ans = 10 * (last - 1) + 1 + 2 + 3;
+        else if (digit == 4)
+            ans = 10 * (last - 1) + 1 + 2 + 3 + 4;
+        cout << ans << endl;
     }
 
     return 0;
