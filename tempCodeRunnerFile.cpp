@@ -1,2 +1,2 @@
-if (maxpos != -1 && minpos != -1)
-            //     break;
+if (dotcnt == 2)
+                        dotcnt = 0;

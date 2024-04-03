@@ -1,6 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
@@ -12,8 +10,12 @@ int main()
     {
         int n;
         cin >> n;
-        int h2 = ceil(n / 3) + 1, h1 = (n / 2), h3 = n - (h1 + h2);
-
+        int h2 = ceil(double(n) / 3), h1 = ceil(double(n) / 3)+1, h3 = n - (h1 + h2);
+        if (h3==0)
+        {
+            h3++;
+            h2--;
+        }
         cout << h2 << " " << h1 << " " << h3 << endl;
     }
 
