@@ -18,35 +18,21 @@ int main()
 {
     int t;
     cin >> t;
-
     tc
     {
         int n;
         cin >> n;
-        string s;
-        cin >> s;
+        int a[n];
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n; i++)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
+            cin >> a[i];
         }
-
-        if (flag)
-            cout << "NO" << endl;
+        if (n > 2 || a[0] + 1 == a[n - 1])
+            cout << "NO";
         else
-            cout << "YES" << endl;
+            cout << "YES";
+        cout << endl;
     }
 
     return 0;

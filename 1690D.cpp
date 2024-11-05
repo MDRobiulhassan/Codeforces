@@ -4,7 +4,7 @@
 #include <set>
 #include <map>
 #include <unordered_map>
-#include <cmath>
+#include <climits>
 using namespace std;
 #define ll long long
 #define vi vector<int>
@@ -13,40 +13,33 @@ using namespace std;
 #define pb push_back
 #define tc while (t--)
 #define l1n for (int i = 0; i < n; i++)
-
 int main()
 {
     int t;
     cin >> t;
 
-    tc
+    while (t--)
     {
-        int n;
-        cin >> n;
+        int n, k;
+        cin >> n >> k;
         string s;
         cin >> s;
 
-        unordered_map<char, int> lo;
+        int pf[n + 1] = {0};
 
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n; i++)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
+            pf[i + 1] = pf[i] + (s[i] == 'W');
         }
 
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
+        int ans = INT_MAX;
+
+        for (int i = k; i <= n; i++)
+        {
+            ans = min(pf[i] - pf[i - k], ans);
+        }
+
+        cout << ans << endl;
     }
 
     return 0;

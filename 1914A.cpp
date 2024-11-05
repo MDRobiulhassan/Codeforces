@@ -25,28 +25,21 @@ int main()
         cin >> n;
         string s;
         cin >> s;
+        int h[26] = {0};
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n; i++)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
+            h[s[i] - 'A']++;
         }
 
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
+        int count = 0;
+        for (int i = 0; i < 26; i++)
+        {
+            if (h[i] >= i + 1)
+                count++;
+        }
+
+        cout << count << endl;
     }
 
     return 0;

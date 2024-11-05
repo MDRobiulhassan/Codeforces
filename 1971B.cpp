@@ -21,32 +21,27 @@ int main()
 
     tc
     {
-        int n;
-        cin >> n;
-        string s;
+        string s, r;
         cin >> s;
-
-        unordered_map<char, int> lo;
+        r = s;
 
         bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < s.size() - 1; i++)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
+            reverse(s.begin() + i, s.end());
+            if (s != r)
             {
+                cout << "YES" << endl;
+                cout << s << endl;
                 flag = true;
                 break;
             }
-
-            lo[t] = i;
+            else
+                reverse(s.begin() + i, s.end());
         }
 
-        if (flag)
+        if (!flag)
             cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
     }
 
     return 0;

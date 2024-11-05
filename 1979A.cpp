@@ -4,7 +4,7 @@
 #include <set>
 #include <map>
 #include <unordered_map>
-#include <cmath>
+#include <climits>
 using namespace std;
 #define ll long long
 #define vi vector<int>
@@ -23,31 +23,20 @@ int main()
     {
         int n;
         cin >> n;
-        string s;
-        cin >> s;
+        vi a(n);
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n; i++)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
+            cin >> a[i];
         }
 
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
-    }
+        int ans = INT_MAX;
+        for (int i = 0; i < n - 1; i++)
+        {
+            ans = min(ans, max(a[i], a[i + 1]));
+        }
 
+        cout << ans - 1 << endl;
+    }
     return 0;
 }

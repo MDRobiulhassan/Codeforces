@@ -13,7 +13,6 @@ using namespace std;
 #define pb push_back
 #define tc while (t--)
 #define l1n for (int i = 0; i < n; i++)
-
 int main()
 {
     int t;
@@ -21,33 +20,32 @@ int main()
 
     tc
     {
-        int n;
-        cin >> n;
         string s;
         cin >> s;
 
-        unordered_map<char, int> lo;
+        int n = stoi(s);
 
-        bool flag = false;
+        int count = -1, even = 0;
 
-        for (int i = 0; i < n; ++i)
+        if ((s[s.size() - 1] - '0') % 2 == 0)
+            count = 0;
+        else if (s[0] % 2 == 0)
+            count = 1;
+        else
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
+            for (int i = 0; i < s.length(); i++)
             {
-                flag = true;
-                break;
+                if ((s[i] - '0') % 2 == 0)
+                {
+                    even++;
+                    break;
+                }
             }
-
-            lo[t] = i;
+            if (even > 0)
+                count = 2;
         }
 
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
+        cout << count << endl;
     }
 
-    return 0;
 }

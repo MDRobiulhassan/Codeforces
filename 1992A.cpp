@@ -18,36 +18,26 @@ int main()
 {
     int t;
     cin >> t;
-
     tc
     {
-        int n;
-        cin >> n;
-        string s;
-        cin >> s;
+        int a, b, c;
+        cin >> a >> b >> c;
+        ll mp = 0;
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i <= 5; ++i)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
+            for (int j = 0; j <= 5 - i; ++j)
             {
-                flag = true;
-                break;
+                int k = 5 - i - j;
+                int new_a = a + i;
+                int new_b = b + j;
+                int new_c = c + k;
+                long long cp = static_cast<long long>(new_a) * new_b * new_c;
+                mp = max(mp, cp);
             }
-
-            lo[t] = i;
         }
 
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
+        cout << mp << endl;
     }
-
     return 0;
 }

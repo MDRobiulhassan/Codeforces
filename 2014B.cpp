@@ -21,32 +21,18 @@ int main()
 
     tc
     {
-        int n;
-        cin >> n;
-        string s;
-        cin >> s;
+        ll n, k;
+        cin >> n >> k;
 
-        unordered_map<char, int> lo;
+        ll st = n - k + 1;
 
-        bool flag = false;
+        ll sum = (n * (n + 1)) / 2 - (st - 1) * st / 2;
 
-        for (int i = 0; i < n; ++i)
-        {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
-        }
-
-        if (flag)
-            cout << "NO" << endl;
-        else
+        if (sum % 2 == 0)
             cout << "YES" << endl;
+        else
+
+            cout << "NO" << endl;
     }
 
     return 0;

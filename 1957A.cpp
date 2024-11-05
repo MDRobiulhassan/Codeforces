@@ -14,6 +14,8 @@ using namespace std;
 #define tc while (t--)
 #define l1n for (int i = 0; i < n; i++)
 
+const int N = 105;
+
 int main()
 {
     int t;
@@ -21,33 +23,22 @@ int main()
 
     tc
     {
+        int h[N] = {0};
         int n;
         cin >> n;
-        string s;
-        cin >> s;
-
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        int a[n];
+        for (int i = 0; i < n; i++)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
+            cin >> a[i];
+            h[a[i]]++;
         }
 
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
+        int count = 0;
+        for (int i = 0; i < N; i++)
+        {
+            count += (h[i] / 3);
+        }
+        cout << count << endl;
     }
-
     return 0;
 }

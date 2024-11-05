@@ -26,27 +26,18 @@ int main()
         string s;
         cin >> s;
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        int count = 0;
+        for (char c : s)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
+            if (c == 'U')
+                count++;
         }
 
-        if (flag)
-            cout << "NO" << endl;
+        if (count % 2 == 1)
+            cout << "YES";
         else
-            cout << "YES" << endl;
+            cout << "NO";
+        cout << endl;
     }
 
     return 0;

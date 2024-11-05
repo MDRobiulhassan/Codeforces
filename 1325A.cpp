@@ -23,30 +23,12 @@ int main()
     {
         int n;
         cin >> n;
-        string s;
-        cin >> s;
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
-        {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
-        }
-
-        if (flag)
-            cout << "NO" << endl;
+        if (n % 2 == 0)
+            cout << n / 2 << " " << n / 2;
         else
-            cout << "YES" << endl;
+            cout << 1 << " " << n - 1;
+        cout << endl;
     }
 
     return 0;

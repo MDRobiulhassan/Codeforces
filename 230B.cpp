@@ -1,44 +1,61 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
+#include <set>
+#include <map>
+#include <unordered_map>
 #include <cmath>
 using namespace std;
+#define ll long long
+#define vi vector<int>
+#define vll vector<long long>
+#define vs vector<string>
+#define pb push_back
+#define tc while (t--)
+#define l1n for (int i = 0; i < n; i++)
+
+const ll N = 1e12;
+vector<bool> isPrime(N + 1, true);
+
+void sieve()
+{
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i * i <= N; i++)
+    {
+        if (isPrime[i])
+        {
+            for (ll j = i * i; j <= N; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+
+bool Divisors(ll num)
+{
+    ll root = sqrt(num);
+    return root * root == num && isPrime[root];
+}
 
 int main()
 {
-    int n;
+    sieve();
+    ll n;
     cin >> n;
-    long long a[n];
-
-    for (int i = 0; i < n; i++)
+    ll a[n];
+    for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
 
-    int count = 0;
-    for (int i = 0; i < n; i++)
+    for (ll i = 0; i < n; i++)
     {
-        if (a[i] <= 3)
-            cout << "NO";
+        if (Divisors(a[i]))
+            cout << "YES";
         else
-        {
-            for (long long j = 1; j <= sqrt(a[i]); j++)
-            {
-                if (a[i] % j == 0)
-                {
-                    count++;
-                    if (j != a[i] / j)
-                    {
-                        count++;
-                    }
-                }
-            }
-            if (count == 3)
-                cout << "YES";
-            else
-                cout << "NO";
-        }
+            cout << "NO";
         cout << endl;
-        count = 0;
     }
 
     return 0;

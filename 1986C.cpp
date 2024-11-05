@@ -21,32 +21,28 @@ int main()
 
     tc
     {
-        int n;
-        cin >> n;
+        int n, m;
+        cin >> n >> m;
         string s;
         cin >> s;
-
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        set<int> a;
+        ;
+        for (int i = 0; i < m; i++)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
+            int x;
+            cin >> x;
+            a.insert(x);
         }
+        string s2;
+        cin >> s2;
+        sort(s2.begin(), s2.end());
 
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
+        int i = 0;
+        for (auto it : a)
+        {
+            s[it - 1] = s2[i++];
+        }
+        cout << s << endl;
     }
 
     return 0;

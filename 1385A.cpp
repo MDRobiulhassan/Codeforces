@@ -16,37 +16,22 @@ using namespace std;
 
 int main()
 {
+    // int t;
+    // cin>>t;
     int t;
     cin >> t;
 
     tc
     {
-        int n;
-        cin >> n;
-        string s;
-        cin >> s;
+        int a[3];
+        cin >> a[0] >> a[1] >> a[2];
+        sort(a, a + 3);
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
-        {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
-        }
-
-        if (flag)
+        if (a[1] != a[2])
             cout << "NO" << endl;
         else
-            cout << "YES" << endl;
+            cout << "YES" << endl
+                 << a[0] << " " << a[0] << " " << a[2] << endl;
     }
 
     return 0;

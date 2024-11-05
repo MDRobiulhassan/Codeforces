@@ -18,35 +18,31 @@ int main()
 {
     int t;
     cin >> t;
-
-    tc
+    while (t--)
     {
-        int n;
-        cin >> n;
+        int n, m;
+        cin >> n >> m;
         string s;
         cin >> s;
+        int h[26] = {0};
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n; i++)
         {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
+            h[s[i] - 'A']++;
         }
 
-        if (flag)
-            cout << "NO" << endl;
-        else
-            cout << "YES" << endl;
+        // for (int i = 0; i < 7; i++)
+        // {
+        //     cout << h[i] << " ";
+        // }
+        int count = 0;
+        for (int i = 0; i < 7; i++)
+        {
+            if (h[i] < m)
+                count += (m - h[i]);
+        }
+
+        cout << count << endl;
     }
 
     return 0;

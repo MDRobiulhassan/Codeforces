@@ -25,28 +25,14 @@ int main()
         cin >> n;
         string s;
         cin >> s;
+        string s2 = s;
 
-        unordered_map<char, int> lo;
-
-        bool flag = false;
-
-        for (int i = 0; i < n; ++i)
-        {
-            char t = s[i];
-
-            if (lo.count(t) && lo[t] < i - 1)
-            {
-                flag = true;
-                break;
-            }
-
-            lo[t] = i;
-        }
-
-        if (flag)
-            cout << "NO" << endl;
+        sort(s2.begin(), s2.end());
+        if (s2 == s)
+            cout << "YES";
         else
-            cout << "YES" << endl;
+            cout << "NO";
+        cout << endl;
     }
 
     return 0;
