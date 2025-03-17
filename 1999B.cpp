@@ -20,10 +20,16 @@ int main()
     cin >> t;
     while (t--)
     {
-        int a[4];
-        cin >> a[0] >> a[1] >> a[2] >> a[3];
+        int a, b, c, d;
+        cin >> a >> b >> c >> d;
 
-        
+        int count = 0;
+
+        if (a >= c && b > d || a > c && b >= d)
+            count++;
+        if (a >= d && b > c || a > d && b >= c)
+            count++;
+        cout << 2 * count << endl;
     }
 
     return 0;
