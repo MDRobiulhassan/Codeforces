@@ -1,6 +1,3 @@
-# Codeforces
-Codeforces Solutions
-
 # Codeforces Solved Problems
 
 This repository contains my solutions to various Codeforces problems, implemented using C++ and some C.
