@@ -14,7 +14,7 @@ int main()
         cin >> a[i];
         sum += a[i];
     }
-    sum/=2;
+    sum /= 2;
     sort(a, a + n);
 
     int div = 0, count = 0;

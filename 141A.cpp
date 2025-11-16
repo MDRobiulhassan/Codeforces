@@ -10,7 +10,7 @@ int main()
     getline(cin, host);
     getline(cin, pile);
 
-    string str=guest+host;
+    string str = guest + host;
 
     sort(str.begin(), str.end());
     sort(pile.begin(), pile.end());
